@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results Portal</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Election Results Portal</h1>
+        <p>Your hub for Delta State polling unit results and analysis.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'polling_units_list' %}">View All Polling Units</a></li>
+            <li><a href="{% url 'lga_results' %}">View LGA Results</a></li>
+            <li><a href="{% url 'ward_results' %}">View Ward Results</a></li>
+            <li><a href="{% url 'state_results' %}">View State Results</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>About the Project</h2>
+        <p>This portal allows you to explore polling unit results in Delta State for the 2011 elections. Browse polling units, LGAs, and wards, and get detailed information about the election results.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Election Results Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

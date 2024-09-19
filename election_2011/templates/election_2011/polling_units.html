@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polling Units</title>
+    
+</head>
+<body>
+    <h1>All Polling Units</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Polling Unit Name</th>
+                <th>Description</th>
+                <th>View Results</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for polling_unit in polling_units %}
+            <tr>
+                <td>{{ polling_unit.uniqueid }}</td>
+                <td>{{ polling_unit.polling_unit_name }}</td>
+                <td>{{ polling_unit.polling_unit_description }}</td>
+                <td>
+                    <a href="{% url 'polling_unit_results' polling_unit.uniqueid %}">View Results</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No polling units available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

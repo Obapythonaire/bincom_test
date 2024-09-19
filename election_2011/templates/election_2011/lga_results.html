@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LGA Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Summed Results for Local Government</h2>
+        <form method="GET" action="">
+            <div class="mb-3">
+                <label for="lgaSelect" class="form-label">Select LGA</label>
+                <select name="lga_id" id="lgaSelect" class="form-control">
+                    {% for lga in lgas %}
+                    <option value="{{ lga.uniqueid }}">{{ lga.lga_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">View Results</button>
+        </form>
+
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Party</th>
+                    <th>Total Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in summed_results %}
+                <tr>
+                    <td>{{ result.party_abbreviation }}</td>
+                    <td>{{ result.total_score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LGA Results</title>
+</head>
+<body>
+    <header>
+        <h1>Select Local Government Area (LGA)</h1>
+    </header>
+
+    <form method="GET" action="">
+        <label for="lga">Select LGA:</label>
+        <select name="lga_id" id="lga">
+            <option value="">-- Select an LGA --</option>
+            {% for lga in lgas %}
+            <option value="{{ lga.lga_id }}" {% if lga.lga_id == selected_lga %}selected{% endif %}>
+                {{ lga.lga_name }}
+            </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if summed_results %}
+    <h2>Results for Selected LGA</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Party</th>
+                <th>Total Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in summed_results %}
+            <tr>
+                <td>{{ result.party_abbreviation }}</td>
+                <td>{{ result.total_score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Please select an LGA to view the results.</p>
+    {% endif %}
+
+</body>
+</html>
